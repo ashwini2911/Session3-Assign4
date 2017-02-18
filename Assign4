@@ -1,0 +1,21 @@
+1. Explain the importance of Namenode in Hadoop cluster
+Name node is also known as master node which is the center piece of HDFS. It keep strack of data, where it is kept in cluster. If a client want to locate a file, it communicates with name node to locate a file in the cluster.
+A name node is-
+1. NameNode only stores the metadata of HDFS – the directory tree of all files in the file system, and tracks the files across the cluster.
+2. NameNode does not store the actual data or the dataset. The data itself is actually stored in the DataNodes.
+3. NameNode knows the list of the blocks and its location for any given file in HDFS. With this information NameNode knows how to construct the file from blocks.
+4. NameNode is so critical to HDFS and when the NameNode is down, HDFS/Hadoop cluster is inaccessible and considered down.
+5. NameNode is usually configured with a lot of memory (RAM). Because the block locations are help in main memory.
+Name node has two parts-
+1. Edit Logs- It maintains transactional data and keep changing on live cluster. Edit logs keep track of all transactional and activity data i.e the data get generated when DDL activities are done. It keeps a copy of itself in the HardDisk as well as in RAM.
+2. FSImage- It maintains the merged data which is not changing on live cluster. It persists data on the hard disk of the name node machine. This is kept as only the previous and latest version. Also present in RAM of name node but untouched in live clusters.
+-The above two logs are together called name node meta data.
+- Name node daemon keeps this above meta data in RAM of high end machine while the name node is up and running for faster access.
+- Whenever cluster is brought up, the edit logs get merged into FS Image resulting in latest version of FSImage.
+- Name node caters the client request and process according to request to return the result to client.
+- Multiple data nodes are connected with one name node and these name node and data node works on heart beat mechanism, Data nodes keep sending on heart beats to name node to state that I am alive and can be assigned some task.
+- Name node holds all the meta data in main memory in the running cluster.
+
+2. Practice the beginners commands for HDFS from the below link
+-Screenshots are attached....
+
